@@ -6,6 +6,7 @@
      Base class for tomography scanning with EPICS.
 """
 
+import functools.wraps
 import json
 import time
 import threading
@@ -1010,7 +1011,10 @@ class TomoScan():
         '''Decorator function to make a function run but
         wait to return until the WaitForOther busy record = 0.
         '''
-        output_value = func()
-        while self.epics_pvs['WaitForOther'].get() == 1:
-            time.sleep(0.25)
-        return output_value
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            output_value = func(*args, **kwargs)
+            while self.epics_pvs['WaitForOther'].get() == 1:
+                time.sleep(0.25)
+            return output_value
+        return wrapper

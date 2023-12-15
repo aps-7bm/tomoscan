@@ -58,6 +58,8 @@ class TomoScanPSO(TomoScan):
         collection_time = frame_time * num_frames
         self.wait_camera_done(collection_time + 5.0)
 
+
+    @self.wait_for_other
     def collect_dark_fields(self):
         """Collects dark field images.
         Calls ``collect_static_frames()`` with the number of images specified
@@ -69,6 +71,7 @@ class TomoScanPSO(TomoScan):
         self.collect_static_frames(self.num_dark_fields)
 
 
+    @self.wait_for_other
     def collect_flat_fields(self):
         """Collects flat field images.
         Calls ``collect_static_frames()`` with the number of images specified
@@ -77,6 +80,7 @@ class TomoScanPSO(TomoScan):
         log.info('collect flat fields')
         super().collect_flat_fields()
         self.collect_static_frames(self.num_flat_fields)
+
 
     def begin_scan(self):
         """Performs the operations needed at the very start of a scan.
@@ -146,6 +150,8 @@ class TomoScanPSO(TomoScan):
         # Call the base class method
         super().end_scan()
 
+
+    @wait_for_other
     def collect_projections(self):
         """Collects projections in fly scan mode.
 
