@@ -97,6 +97,7 @@ $(P)$(R)FullFileName
 #controlPV $(P)$(R)MoveSampleOut
 #controlPV $(P)$(R)StartScan
 #controlPV $(P)$(R)AbortScan
+#controlPV $(P)$(R)WaitForOther
 
 ################################
 # Scan status via Channel Access

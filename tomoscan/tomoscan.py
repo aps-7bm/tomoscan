@@ -232,7 +232,7 @@ class TomoScan():
         for epics_pv in ('MoveSampleIn', 'MoveSampleOut', 'StartScan', 'AbortScan', 'ExposureTime',
                          'FilePath', 'FPFilePathExists', 'FPWriteStatus'):
             self.epics_pvs[epics_pv].add_callback(self.pv_callback)
-        for epics_pv in ('MoveSampleIn', 'MoveSampleOut', 'StartScan', 'AbortScan'):
+        for epics_pv in ('MoveSampleIn', 'MoveSampleOut', 'StartScan', 'AbortScan', 'WaitForOther'):
             self.epics_pvs[epics_pv].put(0)
             
         # Synchronize the FilePathExists PV
@@ -1005,3 +1005,12 @@ class TomoScan():
             if timeout > 0:
                 if elapsed_time >= timeout:
                     raise CameraTimeoutError()
+
+    def wait_for_other(self, func):
+        '''Decorator function to make a function run but
+        wait to return until the WaitForOther busy record = 0.
+        '''
+        output_value = func()
+        while self.epics_pvs['WaitForOther'].get() == 1:
+            time.sleep(0.25)
+        return output_value

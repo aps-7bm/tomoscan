@@ -314,6 +314,13 @@ record(bo,"$(P)$(R)AbortScan")
    field(ONAM,"Yes")
 }
 
+record(busy, "$(P)$(R)WaitForOther")
+{
+   field(ZNAM, "Done")
+   field(ONAM, "Wait")
+}
+
+
 ################################
 # Scan status via Channel Access
 ################################
