@@ -40,6 +40,8 @@ $(P)$(R)SampleDescription3
 # User information
 ##################
 $(P)$(R)UserName
+$(P)$(R)UserLastName
+$(P)$(R)ExperimentYearMonth
 $(P)$(R)UserInstitution
 $(P)$(R)UserBadge
 $(P)$(R)UserEmail
@@ -47,13 +49,12 @@ $(P)$(R)ProposalNumber
 $(P)$(R)ProposalTitle
 $(P)$(R)ESAFNumber
 $(P)$(R)UserInfoUpdate
+#controlPV $(P)$(R)UpdateFilePath
 
 #################
 # Data management
 #################
 $(P)$(R)DetectorTopDir
-$(P)$(R)UserLastName
-$(P)$(R)ExperimentYearMonth
 $(P)$(R)RemoteAnalysisDir
 $(P)$(R)CopyToAnalysisDir
 

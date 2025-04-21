@@ -7,6 +7,7 @@
 """
 import time
 import os
+import threading
 import math
 import h5py 
 from pathlib import Path
@@ -45,12 +46,7 @@ class TomoScan7BM(TomoScanHelical):
         self.set_trigger_mode('FreeRun', 1)
         
         # Set data directory
-        file_path = Path(self.epics_pvs['DetectorTopDir'].get(as_string=True))
-        #file_path = file_path.joinpath(self.epics_pvs['ExperimentYearMonth'].get(as_string=True))
-        file_path = file_path.joinpath(self.epics_pvs['ExperimentYearMonth'].get(as_string=True) + '-'
-                                       + self.epics_pvs['UserLastName'].get(as_string=True) + '-'
-                                       + self.epics_pvs['ProposalNumber'].get(as_string=True)) 
-        self.epics_pvs['FilePath'].put(str(file_path), wait=True)
+        default_file_path()
 
         # Enable auto-increment on file writer
         self.epics_pvs['FPAutoIncrement'].put('Yes')
@@ -59,6 +55,29 @@ class TomoScan7BM(TomoScanHelical):
         self.epics_pvs['OverwriteWarning'].put('Yes')
 
 
+    def pv_callback(self, pvname=None, value=None, char_value=None, **kw):
+        """Callback function that is called by pyEpics when certain EPICS PVs are changed
+            Overload from base class to add file path refresh button.
+        The PVs that are handled are:
+
+        - ``UpdateFilePath`` : Calls ``default_file_path()``
+        """
+        super.pv_callback(pvname, value, char_value, kw)
+        if (pvname.find('UpdateFilePath') != -1) and (value == 1):
+            thread = threading.Thread(target=self.default_file_path, args=())
+            thread.start()
+
+
+    def default_file_path(self):
+        """Change the file path to one derived from the experiment data PVs.
+        """
+        file_path = Path(self.epics_pvs['DetectorTopDir'].get(as_string=True))
+        file_path = file_path.joinpath(self.epics_pvs['ExperimentYearMonth'].get(as_string=True) + '-'
+                                       + self.epics_pvs['UserLastName'].get(as_string=True) + '-'
+                                       + self.epics_pvs['ProposalNumber'].get(as_string=True)) 
+        self.epics_pvs['FilePath'].put(str(file_path), wait=True)
+        self.epics_pvs['UpdateFilePath'].put('Done')
+        
     def fly_scan(self):
         """Overrides fly_scan in super class to catch a bad file path.
         """

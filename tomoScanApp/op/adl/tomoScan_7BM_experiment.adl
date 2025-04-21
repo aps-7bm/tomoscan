@@ -1,14 +1,14 @@
 
 file {
-	name="/home/beams/7BMB/epics/synApps/support/tomoscan/tomoScanApp/op/adl/tomoScan_7BM_experiment.adl"
+	name="/home/beams4/AKASTENGREN/code/tomography/tomoscan/tomoScanApp/op/adl/tomoScan_7BM_experiment.adl"
 	version=030111
 }
 display {
 	object {
-		x=96
-		y=114
+		x=2075
+		y=428
 		width=600
-		height=250
+		height=370
 	}
 	clr=14
 	bclr=4
@@ -111,268 +111,308 @@ text {
 	textix="$(P)$(R)  User Information"
 	align="horiz. centered"
 }
-composite {
+text {
 	object {
-		x=31
-		y=49
-		width=545
-		height=195
+		x=90
+		y=50
+		width=90
+		height=20
 	}
-	"composite name"=""
-	children {
-		composite {
-			object {
-				x=31
-				y=49
-				width=150
-				height=195
-			}
-			"composite name"=""
-			children {
-				text {
-					object {
-						x=91
-						y=49
-						width=90
-						height=20
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="User name"
-					align="horiz. right"
-				}
-				text {
-					object {
-						x=71
-						y=74
-						width=110
-						height=20
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="Institution"
-					align="horiz. right"
-				}
-				text {
-					object {
-						x=71
-						y=99
-						width=110
-						height=20
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="ANL badge #"
-					align="horiz. right"
-				}
-				text {
-					object {
-						x=71
-						y=124
-						width=110
-						height=20
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="User e-mail"
-					align="horiz. right"
-				}
-				text {
-					object {
-						x=41
-						y=149
-						width=140
-						height=20
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="APS proposal #"
-					align="horiz. right"
-				}
-				text {
-					object {
-						x=31
-						y=174
-						width=150
-						height=20
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="APS prop. title"
-					align="horiz. right"
-				}
-				text {
-					object {
-						x=81
-						y=199
-						width=100
-						height=20
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="APS ESAF #"
-					align="horiz. right"
-				}
-				text {
-					object {
-						x=81
-						y=224
-						width=100
-						height=20
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="User info update"
-					align="horiz. right"
-				}
-			}
-		}
-		composite {
-			object {
-				x=186
-				y=49
-				width=390
-				height=195
-			}
-			"composite name"=""
-			children {
-				"text entry" {
-					object {
-						x=186
-						y=49
-						width=390
-						height=20
-					}
-					control {
-						chan="$(P)$(R)UserName"
-						clr=14
-						bclr=51
-					}
-					format="string"
-					limits {
-					}
-				}
-				"text entry" {
-					object {
-						x=186
-						y=74
-						width=390
-						height=20
-					}
-					control {
-						chan="$(P)$(R)UserInstitution"
-						clr=14
-						bclr=51
-					}
-					format="string"
-					limits {
-					}
-				}
-				"text entry" {
-					object {
-						x=186
-						y=99
-						width=390
-						height=20
-					}
-					control {
-						chan="$(P)$(R)UserBadge"
-						clr=14
-						bclr=51
-					}
-					format="string"
-					limits {
-					}
-				}
-				"text entry" {
-					object {
-						x=186
-						y=124
-						width=390
-						height=20
-					}
-					control {
-						chan="$(P)$(R)UserEmail"
-						clr=14
-						bclr=51
-					}
-					format="string"
-					limits {
-					}
-				}
-				"text entry" {
-					object {
-						x=186
-						y=149
-						width=390
-						height=20
-					}
-					control {
-						chan="$(P)$(R)ProposalNumber"
-						clr=14
-						bclr=51
-					}
-					format="string"
-					limits {
-					}
-				}
-				"text entry" {
-					object {
-						x=186
-						y=174
-						width=390
-						height=20
-					}
-					control {
-						chan="$(P)$(R)ProposalTitle"
-						clr=14
-						bclr=51
-					}
-					format="string"
-					limits {
-					}
-				}
-				"text entry" {
-					object {
-						x=186
-						y=199
-						width=390
-						height=20
-					}
-					control {
-						chan="$(P)$(R)ESAFNumber"
-						clr=14
-						bclr=51
-					}
-					format="string"
-					limits {
-					}
-				}
-				"text entry" {
-					object {
-						x=186
-						y=224
-						width=390
-						height=20
-					}
-					control {
-						chan="$(P)$(R)UserInfoUpdate"
-						clr=14
-						bclr=51
-					}
-					format="string"
-					limits {
-					}
-				}
-			}
-		}
+	"basic attribute" {
+		clr=14
 	}
+	textix="User first name"
+	align="horiz. right"
+}
+text {
+	object {
+		x=70
+		y=105
+		width=110
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Institution"
+	align="horiz. right"
+}
+text {
+	object {
+		x=70
+		y=130
+		width=110
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="ANL badge #"
+	align="horiz. right"
+}
+text {
+	object {
+		x=70
+		y=155
+		width=110
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="User e-mail"
+	align="horiz. right"
+}
+text {
+	object {
+		x=40
+		y=180
+		width=140
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="APS proposal #"
+	align="horiz. right"
+}
+text {
+	object {
+		x=30
+		y=205
+		width=150
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="APS prop. title"
+	align="horiz. right"
+}
+text {
+	object {
+		x=80
+		y=260
+		width=100
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="APS ESAF #"
+	align="horiz. right"
+}
+text {
+	object {
+		x=80
+		y=290
+		width=100
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="User info update"
+	align="horiz. right"
+}
+"text entry" {
+	object {
+		x=185
+		y=50
+		width=390
+		height=20
+	}
+	control {
+		chan="$(P)$(R)UserName"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=185
+		y=105
+		width=390
+		height=20
+	}
+	control {
+		chan="$(P)$(R)UserInstitution"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=185
+		y=130
+		width=390
+		height=20
+	}
+	control {
+		chan="$(P)$(R)UserBadge"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=185
+		y=155
+		width=390
+		height=20
+	}
+	control {
+		chan="$(P)$(R)UserEmail"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=185
+		y=180
+		width=390
+		height=20
+	}
+	control {
+		chan="$(P)$(R)ProposalNumber"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=185
+		y=205
+		width=390
+		height=20
+	}
+	control {
+		chan="$(P)$(R)ProposalTitle"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=185
+		y=260
+		width=390
+		height=20
+	}
+	control {
+		chan="$(P)$(R)ESAFNumber"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=185
+		y=290
+		width=390
+		height=20
+	}
+	control {
+		chan="$(P)$(R)UserInfoUpdate"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+text {
+	object {
+		x=90
+		y=75
+		width=90
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="User last name"
+	align="horiz. right"
+}
+"text entry" {
+	object {
+		x=185
+		y=75
+		width=390
+		height=20
+	}
+	control {
+		chan="$(P)$(R)UserLastName"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+text {
+	object {
+		x=80
+		y=230
+		width=100
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Expt year-month"
+	align="horiz. right"
+}
+"text entry" {
+	object {
+		x=185
+		y=230
+		width=390
+		height=20
+	}
+	control {
+		chan="$(P)$(R)ExperimentYearMonth"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=185
+		y=328
+		width=203
+		height=31
+	}
+	control {
+		chan="$(P)$(R)UpdateFilePath"
+		clr=14
+		bclr=51
+	}
+	label="Update File Path"
+	press_msg="1"
 }

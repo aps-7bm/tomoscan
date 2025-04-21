@@ -209,7 +209,7 @@ class TomoScanPSO(TomoScan):
         pso_input = int(self.epics_pvs['PSOEncoderInput'].get(as_string=True))
 
         # Place the motor at the position where the first PSO pulse should be triggered
-        self.epics_pvs['RotationSpeed'].put(self.max_rotation_speed)
+        self.epics_pvs['RotationSpeed'].put(self.max_rotation_speed, wait=True, timeout=30)
         self.epics_pvs['Rotation'].put(self.rotation_start_new, wait=True, timeout=600)
         self.epics_pvs['RotationSpeed'].put(self.motor_speed)
 

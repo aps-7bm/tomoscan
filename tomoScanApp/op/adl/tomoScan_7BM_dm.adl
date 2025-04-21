@@ -1,14 +1,14 @@
 
 file {
-	name="/local/user2bmb/epics_new/synApps/support/tomoscan/tomoScanApp/op/adl/tomoScan_2BM_dm.adl"
+	name="/home/beams/AKASTENGREN/code/tomography/tomoscan/tomoScanApp/op/adl/tomoScan_7BM_dm.adl"
 	version=030111
 }
 display {
 	object {
-		x=109
-		y=159
+		x=5048
+		y=456
 		width=620
-		height=185
+		height=150
 	}
 	clr=14
 	bclr=4
@@ -113,8 +113,8 @@ text {
 }
 text {
 	object {
-		x=78
-		y=51
+		x=80
+		y=50
 		width=140
 		height=20
 	}
@@ -126,34 +126,8 @@ text {
 }
 text {
 	object {
-		x=88
-		y=76
-		width=130
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="User last name"
-	align="horiz. right"
-}
-text {
-	object {
-		x=58
-		y=101
-		width=160
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Experiment year month"
-	align="horiz. right"
-}
-text {
-	object {
-		x=88
-		y=126
+		x=90
+		y=80
 		width=130
 		height=20
 	}
@@ -165,8 +139,8 @@ text {
 }
 "text entry" {
 	object {
-		x=223
-		y=51
+		x=225
+		y=50
 		width=380
 		height=20
 	}
@@ -181,40 +155,8 @@ text {
 }
 "text entry" {
 	object {
-		x=223
-		y=76
-		width=380
-		height=20
-	}
-	control {
-		chan="$(P)$(R)UserLastName"
-		clr=14
-		bclr=51
-	}
-	format="string"
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=223
-		y=101
-		width=380
-		height=20
-	}
-	control {
-		chan="$(P)$(R)ExperimentYearMonth"
-		clr=14
-		bclr=51
-	}
-	format="string"
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=223
-		y=126
+		x=225
+		y=80
 		width=380
 		height=20
 	}
@@ -229,8 +171,8 @@ text {
 }
 text {
 	object {
-		x=88
-		y=151
+		x=90
+		y=105
 		width=130
 		height=20
 	}
@@ -242,8 +184,8 @@ text {
 }
 menu {
 	object {
-		x=223
-		y=151
+		x=225
+		y=105
 		width=120
 		height=20
 	}

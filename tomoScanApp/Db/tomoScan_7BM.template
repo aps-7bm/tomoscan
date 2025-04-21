@@ -172,27 +172,32 @@ record(stringout, "$(P)$(R)ESAFNumber")
    field(VAL,  "Unknown")
 }
 
-record(stringout, "$(P)$(R)UserInfoUpdate")
-{
-   field(VAL,  "Unknown")
-}
-
-
-#############################
-# Data management information
-#############################
-
-record(stringout, "$(P)$(R)DetectorTopDir") 
-{
-   field(VAL,  "Unknown")
-}
-
 record(stringout, "$(P)$(R)UserLastName")
 {
    field(VAL,  "Unknown")
 }
 
 record(stringout, "$(P)$(R)ExperimentYearMonth")
+{
+   field(VAL,  "Unknown")
+}
+
+record(stringout, "$(P)$(R)UserInfoUpdate")
+{
+   field(VAL,  "Unknown")
+}
+
+record(busy, "$(P)$(R)UpdateFilePath")
+{
+   field(ZNAM, "Done")
+   field(ONAM, "Update")
+}
+
+#############################
+# Data management information
+#############################
+
+record(stringout, "$(P)$(R)DetectorTopDir") 
 {
    field(VAL,  "Unknown")
 }
