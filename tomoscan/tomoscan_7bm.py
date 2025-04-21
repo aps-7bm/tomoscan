@@ -46,7 +46,8 @@ class TomoScan7BM(TomoScanHelical):
         self.set_trigger_mode('FreeRun', 1)
         
         # Set data directory
-        default_file_path()
+        self.epics_pvs['UpdateFilePath'].add_callback(self.pv_callback)
+        self.default_file_path()
 
         # Enable auto-increment on file writer
         self.epics_pvs['FPAutoIncrement'].put('Yes')
@@ -62,7 +63,7 @@ class TomoScan7BM(TomoScanHelical):
 
         - ``UpdateFilePath`` : Calls ``default_file_path()``
         """
-        super.pv_callback(pvname, value, char_value, kw)
+        super().pv_callback(pvname, value, char_value, **kw)
         if (pvname.find('UpdateFilePath') != -1) and (value == 1):
             thread = threading.Thread(target=self.default_file_path, args=())
             thread.start()
