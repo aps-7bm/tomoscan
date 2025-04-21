@@ -558,7 +558,7 @@ class TomoScan():
         """
         if exposure_time is None:
             exposure_time = self.epics_pvs['ExposureTime'].value
-            log.warning('Setting exposure time: %f s', exposure_time)
+        log.warning('Setting exposure time: %f s', exposure_time)
         self.epics_pvs['CamAcquireTime'].put(exposure_time, wait=True, timeout = 10.)
 
     def begin_scan(self):

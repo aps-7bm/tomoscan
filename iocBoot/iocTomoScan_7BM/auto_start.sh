@@ -4,7 +4,7 @@
 #
 
 # Manually set IOC_STARTUP_DIR if 7bm_dau3.sh will reside somewhere other than softioc
-IOC_STARTUP_DIR=/home/beams/7BMB/epics/synApps/support/tomoscan/iocBoot/iocTomoScan_7BM
+IOC_STARTUP_DIR=/home/beams/7BMB/epics-ts/synApps/support/tomoscan/iocBoot/iocTomoScan_7BM
 
 # Set EPICS_HOST_ARCH if the env var isn't already set properly for this IOC
 #!EPICS_HOST_ARCH=linux-x86_64
