@@ -113,6 +113,7 @@ class TomoScan7BM(TomoScanHelical):
             self.wait_pv(self.epics_pvs['ShutterStatus'], 0)
             status = self.epics_pvs['ShutterStatus'].get(as_string=True)
             log.info('shutter status: %s', status)
+            time.sleep(1.0)
         # Open 7-BM-B fast shutter
         if not self.epics_pvs['OpenFastShutter'] is None:
             pv = self.epics_pvs['OpenFastShutter']
@@ -171,7 +172,7 @@ class TomoScan7BM(TomoScanHelical):
             self.epics_pvs['CamAcquire'].put('Acquire')
         elif trigger_mode == 'Internal':
             self.epics_pvs['CamTriggerMode'].put('Off', wait=True)
-            self.epics_pvs['CamImageMode'].put('Multiple')
+            self.epics_pvs['CamImageMode'].put('Multiple', wait=True)
             self.epics_pvs['CamNumImages'].put(num_images, wait=True)
         elif trigger_mode == 'InternalSingle':
             self.epics_pvs['CamTriggerMode'].put('Off', wait=True)

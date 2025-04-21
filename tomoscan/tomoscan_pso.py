@@ -51,11 +51,15 @@ class TomoScanPSO(TomoScan):
 
         log.info('collect static frames: %d', num_frames)
         self.set_trigger_mode('Internal', num_frames)
+        #log.warning(self.epics_pvs['CamAcquireTime'].get())
         self.epics_pvs['CamAcquire'].put('Acquire')
         # Wait for detector and file plugin to be ready
-        time.sleep(0.5)
+        time.sleep(1.0)
+        #log.warning(self.epics_pvs['CamAcquireTime'].get())
         frame_time = self.compute_frame_time()
+        log.info(f'frame time = {frame_time}') 
         collection_time = frame_time * num_frames
+        log.info(f'collection time = {collection_time}')
         self.wait_camera_done(collection_time + 5.0)
 
     def collect_dark_fields(self):
@@ -76,6 +80,8 @@ class TomoScanPSO(TomoScan):
         """
         log.info('collect flat fields')
         super().collect_flat_fields()
+        log.warning('past tomoscan.py collect_flat_fields')
+        #log.warning(self.epics_pvs['CamAcquireTime'].get())
         self.collect_static_frames(self.num_flat_fields)
 
     def begin_scan(self):
