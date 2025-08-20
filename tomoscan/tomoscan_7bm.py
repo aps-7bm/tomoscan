@@ -9,6 +9,7 @@ import time
 import os
 import threading
 import math
+import uuid
 import h5py 
 from pathlib import Path
 import numpy as np
@@ -259,6 +260,8 @@ class TomoScan7BM(TomoScanHelical):
         # Call the base class method from TomoScan
         TomoScan.begin_scan(self)
  
+        # Create a new UUID for this scan
+        self.epics_pvs['ScanUUID'].put(str(uuid.uuid4()), wait=True)
         time.sleep(0.1)
 
         # Program the stage driver to provide PSO pulses
@@ -425,3 +428,13 @@ class TomoScan7BM(TomoScanHelical):
             #dm.scp(full_file_name, remote_analysis_dir)
         else:
             log.warning('Automatic data trasfer to data analysis computer is disabled.')
+
+    def compute_frame_time(self):
+        '''Computes the time each frame should take.
+        This method calls the method from the super class, then
+        compares it to the MinFrameTime PV, taking whichever one is
+        greater.
+        '''
+        temp_frame_time = super().compute_frame_time()
+        min_frame_time = self.epics_pvs['MinFrameTime'].get()
+        return min_frame_time if min_frame_time > temp_frame_time else temp_frame_time

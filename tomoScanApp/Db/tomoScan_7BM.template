@@ -278,3 +278,25 @@ record(mbbi, "$(P)$(R)FrameType")
 record(longout, "$(P)$(R)NumGainFields")
 {
 }
+
+
+
+####################
+# Scan UUID
+####################
+
+record(stringout, "$(P)$(R)ScanUUID")
+{
+   field(VAL,  "Unknown")
+}
+
+
+####################
+# Minimum Frame Time
+####################
+
+record(ao, "$(P)$(R)MinFrameTime")
+{
+   field(PREC, "3")
+   field(EGU,  "s")
+}

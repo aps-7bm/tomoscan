@@ -90,3 +90,13 @@ $(P)$(R)ShutterStatusPVName
 # Gain field control
 ####################
 $(P)$(R)NumGainFields
+
+####################
+# Scan UUID
+####################
+$(P)$(R)ScanUUID
+
+####################
+# Minimum Frame Time
+####################
+$(P)$(R)MinFrameTime
