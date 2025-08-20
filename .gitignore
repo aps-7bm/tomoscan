@@ -172,6 +172,7 @@ envPaths
 dllPath.bat
 auto_settings.sav*
 auto_positions.sav*
+configure/RELEASE
 
 #tomoScan products
 .loglogin
